@@ -27,7 +27,8 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/utlity/css/utlity.css"
 app_include_js = [
-    "/assets/utlity/js/notes.js",
+    # ?v= busts the browser cache (assets are cached 12h, unversioned): bump it when notes.js changes
+    "/assets/utlity/js/notes.js?v=2",
 ]
 
 # include js, css files in header of web template

@@ -21,8 +21,12 @@
 		const wildcard_handlers =
 			frappe.ui.form.handlers["*"]?.[event_name] || [];
 
+		// Newer Frappe already adds "*" handlers itself; adding them again ran every wildcard
+		// handler twice (e.g. the workflow "Add Note" dialog opened twice).
 		wildcard_handlers.forEach((fn) => {
-			handlers.new_style.push(fn);
+			if (!handlers.new_style.includes(fn)) {
+				handlers.new_style.push(fn);
+			}
 		});
 
 		return handlers;
